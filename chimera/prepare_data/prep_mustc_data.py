@@ -11,6 +11,7 @@ import os
 import os.path as op
 print(os.getenv("PATH"))
 os.environ["PATH"] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
+sys.path.append('/kaggle/working/sample')
 print(os.getcwd())
 print(os.getenv("PATH"))
 
