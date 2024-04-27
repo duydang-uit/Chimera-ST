@@ -11,7 +11,7 @@ import os
 import os.path as op
 
 print(os.getcwd())
-!echo $PATH
+print(os.getenv("PATH"))
 
 import shutil
 from itertools import groupby
