@@ -9,11 +9,14 @@ import logging
 import sys
 import os
 import os.path as op
+
+print(os.getcwd())
+!echo $PATH
+
 import shutil
 from itertools import groupby
 from tempfile import NamedTemporaryFile
 from typing import Tuple
-print(os.getcwd())
 import pandas as pd
 import torchaudio
 from chimera.prepare_data.data_utils import (
