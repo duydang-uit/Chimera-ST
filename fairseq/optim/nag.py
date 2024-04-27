@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from collections import Collection
+from collections import namedtuple
 from dataclasses import dataclass, field
 from typing import List
 
@@ -39,7 +39,7 @@ class FairseqNAG(FairseqOptimizer):
         """
         return {
             "lr": self.cfg.lr[0]
-            if isinstance(self.cfg.lr, Collection)
+            if isinstance(self.cfg.lr, namedtuple)
             else self.cfg.lr,
             "momentum": self.cfg.momentum,
             "weight_decay": self.cfg.weight_decay,
