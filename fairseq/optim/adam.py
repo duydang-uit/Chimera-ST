@@ -5,7 +5,7 @@
 
 import logging
 import math
-from collections import Collection
+from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import List
 
@@ -75,7 +75,7 @@ class FairseqAdam(FairseqOptimizer):
         """
         return {
             "lr": self.cfg.lr[0]
-            if isinstance(self.cfg.lr, Collection)
+            if isinstance(self.cfg.lr, defaultdict)
             else self.cfg.lr,
             "betas": eval(self.cfg.adam_betas),
             "eps": self.cfg.adam_eps,
