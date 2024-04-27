@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from collections import Collection
+from collections import namedtuple
 from dataclasses import dataclass, field
 from typing import List
 
@@ -51,14 +51,14 @@ class InverseSquareRootSchedule(FairseqLRScheduler):
 
     def __init__(self, cfg: DictConfig, optimizer):
         super().__init__(cfg, optimizer)
-        if isinstance(cfg.lr, Collection) and len(cfg.lr) > 1:
+        if isinstance(cfg.lr, namedtuple) and len(cfg.lr) > 1:
             raise ValueError(
                 "Cannot use a fixed learning rate schedule with inverse_sqrt."
                 " Consider --lr-scheduler=fixed instead."
             )
         warmup_end_lr = (
             cfg.lr[0]
-            if isinstance(cfg.lr, Collection)
+            if isinstance(cfg.lr, namedtuple)
             else cfg.lr
         )
         if cfg.warmup_init_lr < 0:
