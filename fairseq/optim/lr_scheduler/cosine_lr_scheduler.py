@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 import math
-from collections import Collection
+from collections import namedtuple
 from dataclasses import dataclass, field
 from typing import List
 
@@ -71,7 +71,7 @@ class CosineSchedule(FairseqLRScheduler):
         self, cfg: DictConfig, fairseq_optimizer
     ):
         super().__init__(cfg, fairseq_optimizer)
-        if isinstance(cfg.lr, Collection) and len(cfg.lr) > 1:
+        if isinstance(cfg.lr, namedtuple) and len(cfg.lr) > 1:
             raise ValueError(
                 "Cannot use a fixed learning rate schedule with cosine."
                 " Consider --lr-scheduler=fixed instead."
@@ -80,7 +80,7 @@ class CosineSchedule(FairseqLRScheduler):
         warmup_end_lr = cfg.max_lr
         lr = (
             cfg.lr[0]
-            if isinstance(cfg.lr, Collection)
+            if isinstance(cfg.lr, namedtuple)
             else cfg.lr
         )
         if cfg.warmup_init_lr < 0:
