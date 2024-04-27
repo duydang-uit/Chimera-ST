@@ -20,7 +20,7 @@ from tempfile import NamedTemporaryFile
 from typing import Tuple
 import pandas as pd
 import torchaudio
-from chimera.prepare_data.data_utils import (
+from sample.chimera.prepare_data.data_utils import (
     create_zip,
     extract_fbank_features,
     filter_manifest_df,
