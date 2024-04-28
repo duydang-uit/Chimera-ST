@@ -1,5 +1,7 @@
 #!/bin/bash
 # Adapted from https://github.com/facebookresearch/MIXER/blob/master/prepareData.sh
+export PATH="$PATH:/kaggle/working/sample"
+export PYTHONPATH="$PYTHONPATH:/kaggle/working/sample"
 
 export version="wmt17"
 export devset="split-train"
