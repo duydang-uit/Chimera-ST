@@ -8,7 +8,6 @@ Data pre-processing: build vocabularies and binarize training data.
 """
 
 import logging
-print(logging.__version__)
 import os
 import shutil
 import sys
