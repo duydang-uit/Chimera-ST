@@ -10,10 +10,10 @@ Data pre-processing: build vocabularies and binarize training data.
 import os
 import sys
 
-print(os.environ.get('PYTHONPATH', ''))
 os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
-os.environ['PATH'] = os.getevn("PATH") + os.pathsep + "/kaggle/working/sample"
+os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
 sys.path.append("/kaggle/working/sample")
+print(os.environ.get('PYTHONPATH', ''))
 
 import logging
 import shutil
