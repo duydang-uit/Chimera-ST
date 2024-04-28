@@ -16,7 +16,7 @@ from itertools import zip_longest
 from multiprocessing import Pool
 
 print(os.getcwd())
-print(sys.executable())
+print(sys.executable)
 
 from fairseq import options, tasks, utils
 from fairseq.binarizer import Binarizer
