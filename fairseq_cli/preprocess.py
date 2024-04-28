@@ -14,10 +14,8 @@ import sys
 from collections import Counter
 from itertools import zip_longest
 from multiprocessing import Pool
-
-os.environ["PATH"] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
-sys.path.append('/kaggle/working/sample')
-
+print("os.environ.get('PYTHONPATH', ''))
+os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample}"
 
 from fairseq import options, tasks, utils
 from fairseq.binarizer import Binarizer
