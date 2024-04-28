@@ -1,6 +1,15 @@
 #!/bin/bash
 
 # prerequisits and environment variables
+export PATH="$PATH:/kaggle/working/sample"
+export PYTHONPATH="$PYTHONPATH:/kaggle/working/sample"
+
+export MUSTC_ROOT="speech_data/mustc"
+export WMT_ROOT="wmt_data"
+export SAVE_ROOT="checkpoints"
+export target=de
+
+
 export ST_SAVE_DIR="$SAVE_ROOT/st"
 export MT_SAVE_DIR="$SAVE_ROOT/mt"
 export SAVE_DIR=$ST_SAVE_DIR
