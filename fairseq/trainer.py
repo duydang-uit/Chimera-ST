@@ -7,9 +7,17 @@
 Train a network across multiple GPUs.
 """
 
+import sys
+import os
+
+os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
+os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
+sys.path.append("/kaggle/working/sample")
+print(os.environ.get('PYTHONPATH', ''))
+
+
 import contextlib
 import logging
-import sys
 import time
 from argparse import Namespace
 from itertools import chain
