@@ -179,6 +179,10 @@ def main(args):
                 os.remove(indexed_dataset.index_file_path(temp_file_path))
 
         ds.finalize(dataset_dest_file(args, output_prefix, lang, "idx"))
+        replaced_percentage = 0.0
+        
+        if n_seq_tok[1] > 0:
+            replaced_percentage = 100 * sum(replaced.values()) / n_seq_tok[1]
 
         logger.info(
             "[{}] {}: {} sents, {} tokens, {:.3}% replaced by {}".format(
@@ -186,7 +190,7 @@ def main(args):
                 input_file,
                 n_seq_tok[0],
                 n_seq_tok[1],
-                100 * sum(replaced.values()) / n_seq_tok[1],
+                replaced_percentage,
                 vocab.unk_word,
             )
         )
