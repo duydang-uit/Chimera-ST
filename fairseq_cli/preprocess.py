@@ -18,7 +18,8 @@ from multiprocessing import Pool
 from fairseq import options, tasks, utils
 from fairseq.binarizer import Binarizer
 from fairseq.data import indexed_dataset
-
+print(os.getcwd())
+print(sys.executable())
 
 logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
