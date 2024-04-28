@@ -3,11 +3,16 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+import os
+import sys
+
+os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
+os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
+sys.path.append("/kaggle/working/sample")
 
 import argparse
 import logging
 import sys
-import os
 import os.path as op
 import shutil
 from itertools import groupby
