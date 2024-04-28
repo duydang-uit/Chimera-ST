@@ -6,7 +6,6 @@
 import multiprocessing
 import os
 import pdb
-from pdb import Pdb
 import sys
 
 
@@ -21,14 +20,14 @@ except Exception:
     _stdin_fd = None
 
 
-class MultiprocessingPdb(Pdb):
+class MultiprocessingPdb(pdb.Pdb):
     """A Pdb wrapper that works in a multiprocessing environment.
 
     Usage: `from fairseq import pdb; pdb.set_trace()`
     """
 
     def __init__(self):
-        Pdb.__init__(self, nosigint=True)
+        pdb.Pdb.__init__(self, nosigint=True)
 
     def _cmdloop(self):
         stdin_bak = sys.stdin
