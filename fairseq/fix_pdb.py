@@ -43,5 +43,5 @@ class MultiprocessingPdb(pdb.Pdb):
 
 
 def set_trace():
-    pdb = MultiprocessingPdb()
-    pdb.set_trace(sys._getframe().f_back)
+    Mpdb = MultiprocessingPdb()
+    Mpdb.set_trace(sys._getframe().f_back)
