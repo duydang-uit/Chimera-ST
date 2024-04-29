@@ -2,6 +2,8 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+import subprocess
+import sys
 
 from dataclasses import dataclass, field
 
@@ -28,6 +30,7 @@ class MosesTokenizer(object):
         self.cfg = cfg
 
         try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "sacremoses"])
             from sacremoses import MosesTokenizer, MosesDetokenizer
 
             self.tok = MosesTokenizer(cfg.source_lang)
