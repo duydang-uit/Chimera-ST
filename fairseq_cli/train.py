@@ -12,6 +12,10 @@ import logging
 import math
 import os
 import sys
+os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
+os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
+sys.path.append("/kaggle/working/sample")
+
 from typing import Dict, Optional, Any, List, Tuple, Callable
 import json
 import random
