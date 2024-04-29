@@ -274,7 +274,7 @@ def process(args):
         )
 
         # Clean up
-        shutil.rmtree(feature_root, ignore_errors=True)
+        # shutil.rmtree(feature_root, ignore_errors=True)
 
 
 def main():
