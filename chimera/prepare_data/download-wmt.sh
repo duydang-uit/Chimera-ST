@@ -1,5 +1,9 @@
 #!/bin/bash
 # Adapted from https://github.com/facebookresearch/MIXER/blob/master/prepareData.sh
+export MUSTC_ROOT="speech_data/mustc"
+export WMT_ROOT="wmt_data"
+export SAVE_ROOT="checkpoints"
+mkdir -p "speech_data/mustc" "wmt_data" "checkpoints"
 
 export version="wmt17"
 export target=de
