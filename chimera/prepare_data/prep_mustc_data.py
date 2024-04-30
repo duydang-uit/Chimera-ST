@@ -114,7 +114,7 @@ class MUSTC(Dataset):
         wav_path, wav_rel_path, offset, n_frames, sr,\
             src_utt, tgt_utt, spk_id, utt_id = self.data[n]
         waveform, _ = torchaudio.load(
-            wav_path, offset=offset, num_frames=n_frames)
+            wav_path, frame_offset=offset, num_frames=n_frames)
         return waveform, sr, src_utt, tgt_utt, spk_id, utt_id,\
             wav_rel_path, offset
 
