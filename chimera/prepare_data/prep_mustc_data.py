@@ -219,15 +219,15 @@ def process(args):
                 f"spm_{args.vocab_type}{v_size_str}_{args.task}_joint"
             os_system(f"cp"
                       f" {chi_spm_dir}/{args.joint_spm}/{spm_filename_prefix}*"
-                      f" {cur_root}")
+                      f" /kaggle/working/sample/speech_data/mustc/en-de")
         else:
             spm_filename_prefix = \
                 f"spm_{args.vocab_type}{v_size_str}_{args.task}"
             os_system(f"cp"
                       f" {chi_spm_dir}/{folder}/{spm_filename_prefix}*"
-                      f" {cur_root}")
+                      f" /kaggle/working/sample/speech_data/mustc/en-de")
         if os.path.exists(
-                f"{cur_root}/{spm_filename_prefix}.txt"):
+                f"/kaggle/working/sample/speech_data/mustc/en-de/{spm_filename_prefix}.txt"):
             logger.info("downloaded existing vocab files")
         elif len(train_text) != 0:
             logger.info("generating vocab files for target language")
@@ -236,7 +236,7 @@ def process(args):
                     f.write(t + "\n")
                 gen_vocab(
                     f.name,
-                    op.join(cur_root, spm_filename_prefix),
+                    op.join("/kaggle/working/sample/speech_data/mustc/en-de", spm_filename_prefix),
                     args.vocab_type,
                     args.vocab_size,
                 )
@@ -251,7 +251,7 @@ def process(args):
                         f.write(t + "\n")
                     gen_vocab(
                         f.name,
-                        op.join(cur_root, src_spm_filename_prefix),
+                        op.join("/kaggle/working/sample/speech_data/mustc/en-de", src_spm_filename_prefix),
                         args.vocab_type,
                         args.vocab_size,
                     )
