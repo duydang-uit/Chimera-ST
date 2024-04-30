@@ -210,7 +210,7 @@ def process(args):
             else:
                 df = filter_manifest_df(df, is_train_split=is_train_split,
                                         max_n_frames=1000000)
-            save_df_to_tsv(df, op.join(cur_root, f"{split}_{args.task}.tsv"))
+            save_df_to_tsv(df, op.join("/kaggle/working/sample/speech_data/mustc/en-de", f"{split}_{args.task}.tsv"))
 
         # Generate vocab
         v_size_str = "" if args.vocab_type == "char" else str(args.vocab_size)
