@@ -263,7 +263,7 @@ def process(args):
         logger.info(f"generating config: {config_yaml}")
         gen_config_yaml(
             args.data_root,
-            cur_root,
+            "/kaggle/working/sample/speech_data/mustc/en-de",
             spm_filename_prefix + ".model",
             yaml_filename=config_yaml,
             specaugment_policy="lb",
