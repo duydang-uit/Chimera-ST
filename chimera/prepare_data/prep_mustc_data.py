@@ -138,10 +138,10 @@ def process(args):
             logger.info(f"{cur_root} does not exist. Skipped.")
             continue
         # Extract features
-        feature_root = op.join(cur_root, "fbank80")
+        feature_root = "speech_data/mustc/en-de/fbank80"
         zip_filename = "fbank80.zip"
         os.makedirs(feature_root, exist_ok=True)
-        if os.path.exists(os.path.join(cur_root, zip_filename)):
+        if os.path.exists(os.path.join("speech_data/mustc/en-de", zip_filename)):
             logger.info(f"{zip_filename} already existed and downloaded")
         elif not args.ignore_fbank80:
             logger.info(f"generating fbank features: {zip_filename}")
@@ -155,7 +155,7 @@ def process(args):
                         op.join(feature_root, f"{utt_id}.npy")
                     )
             # Pack features into ZIP
-            zip_path = op.join(cur_root, zip_filename)
+            zip_path = op.join("speech_data/mustc/en-de", zip_filename)
             logger.info("ZIPing features...")
             create_zip(feature_root, zip_path)
         if not args.ignore_fbank80:
