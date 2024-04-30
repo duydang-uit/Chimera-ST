@@ -138,6 +138,7 @@ def process(args):
             logger.info(f"{cur_root} does not exist. Skipped.")
             continue
         # Extract features
+        print("code 1")
         feature_root = "speech_data/mustc/en-de/fbank80"
         zip_filename = "fbank80.zip"
         os.makedirs(feature_root, exist_ok=True)
@@ -165,6 +166,7 @@ def process(args):
         else:
             zip_manifest = None
         # Generate TSV manifest
+        print("code 2")
         logger.info("Generating manifest...")
         train_text = []
         if args.triplet:
@@ -213,6 +215,7 @@ def process(args):
             save_df_to_tsv(df, op.join("/kaggle/working/sample/speech_data/mustc/en-de", f"{split}_{args.task}.tsv"))
 
         # Generate vocab
+        print("code 3")
         v_size_str = "" if args.vocab_type == "char" else str(args.vocab_size)
         if args.joint_spm is not None:
             spm_filename_prefix = \
@@ -259,6 +262,7 @@ def process(args):
             raise Exception("you need to process raw file from start")
 
         # Generate config YAML
+        print("code 4")
         config_yaml = f'config_{args.task}.yaml'
         logger.info(f"generating config: {config_yaml}")
         gen_config_yaml(
@@ -272,7 +276,7 @@ def process(args):
             else spm_filename_prefix+".model" if args.joint_spm is not None
             else None
         )
-
+        print("code 5")
         # Clean up
         # shutil.rmtree(feature_root, ignore_errors=True)
 
