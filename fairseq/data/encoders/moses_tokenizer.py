@@ -30,7 +30,7 @@ class MosesTokenizerConfig(FairseqDataclass):
 
 
 @register_tokenizer("moses", dataclass=MosesTokenizerConfig)
-class MosesTokenizer(object):
+class MosesTokenizers(object):
     def __init__(self, cfg):
         self.cfg = cfg
 
