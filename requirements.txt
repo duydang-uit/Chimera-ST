@@ -1,6 +1,6 @@
 hydra-core
 pandas
-tensorflow
+tensorflow[and-cuda]
 sacremoses
 sacrebleu
 soundfile
