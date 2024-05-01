@@ -11,6 +11,7 @@ import sys
 os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
 os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
 sys.path.append("/kaggle/working/sample")
+os.path.dirname(sys.executable) + ';' + os.environ.get('PATH', '')
 
 from fairseq import file_utils
 from fairseq.data.encoders import register_bpe
