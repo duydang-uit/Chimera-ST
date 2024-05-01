@@ -4,6 +4,11 @@
 # LICENSE file in the root directory of this source tree.
 import subprocess
 import sys
+import os
+
+os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
+os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
+sys.path.append("/kaggle/working/sample")
 
 from dataclasses import dataclass, field
 
