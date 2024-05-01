@@ -6,9 +6,7 @@ libbz2-dev
 liblzma-dev
 unzip
 pigz
-# axel
 libsndfile1
-# krb5-user
 libboost-program-options-dev
 libboost-system-dev
 libboost-test-dev
@@ -16,4 +14,3 @@ libeigen3-dev
 libfftw3-doc
 libfftw3-dev
 libboost-thread-dev
-# espeak
