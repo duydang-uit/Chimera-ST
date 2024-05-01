@@ -9,6 +9,9 @@ import os
 os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
 os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
 sys.path.append("/kaggle/working/sample")
+os.environ['PATH'] = os.path.dirname(sys.executable) + ';' + os.environ.get('PATH', '')
+
+
 
 from dataclasses import dataclass, field
 
@@ -35,7 +38,6 @@ class MosesTokenizers(object):
         self.cfg = cfg
 
         try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "sacremoses"])
             from sacremoses import MosesTokenizer, MosesDetokenizer
 
             self.tok = MosesTokenizer(cfg.source_lang)
