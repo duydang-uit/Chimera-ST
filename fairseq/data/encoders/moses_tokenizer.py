@@ -2,18 +2,18 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-import subprocess
 import sys
 import os
 
 os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
 os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
 sys.path.append("/kaggle/working/sample")
-os.environ['PATH'] = os.path.dirname(sys.executable) + ';' + os.environ.get('PATH', '')
 
 print(sys.executable)
 print(os.getcwd())
 
+from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
+import subprocess
 
 from dataclasses import dataclass, field
 from fairseq.data.encoders import register_tokenizer
@@ -37,15 +37,8 @@ class MosesTokenizerConfig(FairseqDataclass):
 class MosesTokenizer(object):
     def __init__(self, cfg):
         self.cfg = cfg
-
-        try:
-            from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
-            self.tok = MosesTokenizer(cfg.source_lang)
-            self.detok = MosesDetokenizer(cfg.target_lang)
-        except ImportError:
-            raise ImportError(
-                "Please install Moses tokenizer with: pip install sacremoses"
-            )
+        self.tok = MosesTokenizer(cfg.source_lang)
+        self.detok = MosesDetokenizer(cfg.target_lang)
 
     def encode(self, x: str) -> str:
         return self.tok.tokenize(
