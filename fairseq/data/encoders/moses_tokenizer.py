@@ -16,9 +16,6 @@ print(os.getcwd())
 
 
 from dataclasses import dataclass, field
-
-from sacremoses import MosesTokenizer, MosesDetokenizer
-
 from fairseq.data.encoders import register_tokenizer
 from fairseq.dataclass import FairseqDataclass
 
@@ -42,7 +39,7 @@ class MosesTokenizer(object):
         self.cfg = cfg
 
         try:
-            from sacremoses import MosesTokenizer, MosesDetokenizer
+            from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
             self.tok = MosesTokenizer(cfg.source_lang)
             self.detok = MosesDetokenizer(cfg.target_lang)
         except ImportError:
