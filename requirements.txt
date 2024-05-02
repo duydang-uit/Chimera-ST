@@ -1,7 +1,7 @@
 hydra-core
 pandas
 tensorflow[and-cuda]
-sacremoses
+# sacremoses
 sacrebleu
 soundfile
 sentencepiece
