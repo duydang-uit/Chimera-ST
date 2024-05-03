@@ -8,13 +8,13 @@ import os
 os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
 os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
 sys.path.append("/kaggle/working/sample")
-os.system("pip install mosestokenizer")
+# os.system("pip install mosestokenizer")
 print(sys.executable)
 print(os.getcwd())
 
-# from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
+from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
 import subprocess
-from mosestokenizer import MosesTokenizer, MosesDetokenizer
+# from mosestokenizer import MosesTokenizer, MosesDetokenizer
 from dataclasses import dataclass, field
 from fairseq.data.encoders import register_tokenizer
 from fairseq.dataclass import FairseqDataclass
@@ -37,8 +37,8 @@ class MosesTokenizerConfig(FairseqDataclass):
 class MosesTokenizer(object):
     def __init__(self, cfg):
         self.cfg = cfg
-        self.tok = MosesTokenizer(cfg.source_lang)
-        self.detok = MosesDetokenizer(cfg.target_lang)
+        self.tok = MosesTokenizer('en')
+        self.detok = MosesDetokenizer('de')
 
     def encode(self, x: str) -> str:
         return self.tok.tokenize(
