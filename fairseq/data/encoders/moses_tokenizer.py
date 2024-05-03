@@ -8,13 +8,13 @@ import os
 os.environ['PYTHONPATH'] = f"{os.environ.get('PYTHONPATH', '')}:/kaggle/working/sample"
 os.environ['PATH'] = os.getenv("PATH") + os.pathsep + "/kaggle/working/sample"
 sys.path.append("/kaggle/working/sample")
-os.system("pip install -U sacremoses")
+os.system("pip install mosestokenizer")
 print(sys.executable)
 print(os.getcwd())
 
-from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
+# from sacremoses.tokenize import MosesTokenizer, MosesDetokenizer
 import subprocess
-
+from mosestokenizer import MosesTokenizer, MosesDetokenizer
 from dataclasses import dataclass, field
 from fairseq.data.encoders import register_tokenizer
 from fairseq.dataclass import FairseqDataclass
