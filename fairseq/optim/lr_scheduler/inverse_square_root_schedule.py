@@ -7,6 +7,7 @@ from collections import namedtuple
 from dataclasses import dataclass, field
 from typing import List
 
+import omegaconf
 from fairseq.dataclass import FairseqDataclass
 from omegaconf import II, DictConfig
 
@@ -52,14 +53,14 @@ class InverseSquareRootSchedule(FairseqLRScheduler):
     def __init__(self, cfg: DictConfig, optimizer):
         super().__init__(cfg, optimizer)
         print(cfg.lr, type(cfg.lr))
-        if isinstance(cfg.lr, tuple) and len(cfg.lr) > 1:
+        if isinstance(cfg.lr, omegaconf.listconfig.ListConfig) and len(cfg.lr) > 1:
             raise ValueError(
                 "Cannot use a fixed learning rate schedule with inverse_sqrt."
                 " Consider --lr-scheduler=fixed instead."
             )
         warmup_end_lr = (
             cfg.lr[0]
-            if isinstance(cfg.lr, tuple)
+            if isinstance(cfg.lr, omegaconf.listconfig.ListConfig)
             else cfg.lr
         )
         if cfg.warmup_init_lr < 0:
