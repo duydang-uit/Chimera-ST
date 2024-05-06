@@ -189,7 +189,7 @@ class TransformerDecoderLayer(nn.Module):
         self.quant_noise_block_size = getattr(args, "quant_noise_pq_block_size", 8)
 
         self.cross_self_attention = getattr(args, "cross_self_attention", False)
-
+        print("Decoder init called")
         self.self_attn = self.build_self_attention(
             self.embed_dim,
             args,
@@ -263,6 +263,7 @@ class TransformerDecoderLayer(nn.Module):
         )
 
     def build_encoder_attention(self, embed_dim, args):
+        print("MultiheadAttention called")
         return MultiheadAttention(
             embed_dim,
             args.decoder_attention_heads,
