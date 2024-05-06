@@ -123,6 +123,8 @@ class TransformerEncoderLayer(nn.Module):
         # Note that we cannot use -inf here, because at some edge cases,
         # the attention weight (before softmax) for some padded element in query
         # will become -inf, which results in NaN in model parameters
+        print("attn_mask transformer_layer:" ,attn_mask)
+        print("attn_mask transformer_layer type:" ,attn_mask.dtype)
         if attn_mask is not None:
             attn_mask = attn_mask.masked_fill(attn_mask.to(torch.bool), -1e8)
 
