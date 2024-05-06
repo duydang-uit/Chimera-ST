@@ -52,7 +52,7 @@ class InverseSquareRootSchedule(FairseqLRScheduler):
 
     def __init__(self, cfg: DictConfig, optimizer):
         super().__init__(cfg, optimizer)
-        print(cfg.lr, type(cfg.lr))
+        print(cfg.lr, type(cfg.lr), "Code LR")
         if isinstance(cfg.lr, omegaconf.listconfig.ListConfig) and len(cfg.lr) > 1:
             raise ValueError(
                 "Cannot use a fixed learning rate schedule with inverse_sqrt."
@@ -83,11 +83,13 @@ class InverseSquareRootSchedule(FairseqLRScheduler):
     def step(self, epoch, val_loss=None):
         """Update the learning rate at the end of the given epoch."""
         super().step(epoch, val_loss)
+        print("code LR 2")
         # we don't change the learning rate at epoch boundaries
         return self.optimizer.get_lr()
 
     def step_update(self, num_updates):
         """Update the learning rate after each update."""
+        print("code LR 3")
         if num_updates < self.cfg.warmup_updates:
             self.lr = self.cfg.warmup_init_lr + num_updates * self.lr_step
         else:
