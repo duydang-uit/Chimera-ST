@@ -76,6 +76,8 @@ class TransformerEncoderLayer(nn.Module):
         )
 
     def build_self_attention(self, embed_dim, args):
+        print("encoder self_attention called")
+        
         return MultiheadAttention(
             embed_dim,
             args.encoder_attention_heads,
@@ -251,6 +253,7 @@ class TransformerDecoderLayer(nn.Module):
     def build_self_attention(
         self, embed_dim, args, add_bias_kv=False, add_zero_attn=False
     ):
+        print("build_self_attention decoder called")
         return MultiheadAttention(
             embed_dim,
             args.decoder_attention_heads,
@@ -263,7 +266,7 @@ class TransformerDecoderLayer(nn.Module):
         )
 
     def build_encoder_attention(self, embed_dim, args):
-        print("MultiheadAttention called")
+        print("build encoder attention called")
         return MultiheadAttention(
             embed_dim,
             args.decoder_attention_heads,
