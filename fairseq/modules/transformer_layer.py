@@ -76,7 +76,7 @@ class TransformerEncoderLayer(nn.Module):
         )
 
     def build_self_attention(self, embed_dim, args):
-        print("encoder self_attention called")
+        # print("encoder self_attention called")
         
         return MultiheadAttention(
             embed_dim,
@@ -126,7 +126,7 @@ class TransformerEncoderLayer(nn.Module):
         # the attention weight (before softmax) for some padded element in query
         # will become -inf, which results in NaN in model parameters
         try:
-            print("attn_mask transformer_layer type:" ,attn_mask.dtype)
+            # print("attn_mask transformer_layer type:" ,attn_mask.dtype)
         except:
             pass
         if attn_mask is not None:
@@ -190,7 +190,7 @@ class TransformerDecoderLayer(nn.Module):
         self.quant_noise_block_size = getattr(args, "quant_noise_pq_block_size", 8)
 
         self.cross_self_attention = getattr(args, "cross_self_attention", False)
-        print("Decoder init called")
+        # print("Decoder init called")
         self.self_attn = self.build_self_attention(
             self.embed_dim,
             args,
@@ -252,7 +252,7 @@ class TransformerDecoderLayer(nn.Module):
     def build_self_attention(
         self, embed_dim, args, add_bias_kv=False, add_zero_attn=False
     ):
-        print("build_self_attention decoder called")
+        # print("build_self_attention decoder called")
         return MultiheadAttention(
             embed_dim,
             args.decoder_attention_heads,
@@ -265,7 +265,7 @@ class TransformerDecoderLayer(nn.Module):
         )
 
     def build_encoder_attention(self, embed_dim, args):
-        print("build encoder attention called")
+        # print("build encoder attention called")
         return MultiheadAttention(
             embed_dim,
             args.decoder_attention_heads,
