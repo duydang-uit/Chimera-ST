@@ -162,15 +162,15 @@ class MultiheadAttention(nn.Module):
             and not torch.jit.is_scripting()
         ):
             try:
-                print("query type:",query)
+                print("query type:",query.dtype)
             except:
                 pass
             try:
-                print("key type:",key)
+                print("key type:",key.dtype)
             except:
                 pass
             try:
-                print("attn_mask type:",attn_mask)
+                print("attn_mask type:",attn_mask.dtype)
             except:
                 pass
             assert key is not None and value is not None
