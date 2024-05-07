@@ -161,18 +161,18 @@ class MultiheadAttention(nn.Module):
             # treats bias in linear module as method.
             and not torch.jit.is_scripting()
         ):
-            try:
-                print("query type:",query.dtype)
-            except:
-                pass
-            try:
-                print("key type:",key.dtype)
-            except:
-                pass
-            try:
-                print("attn_mask type:",attn_mask.dtype)
-            except:
-                pass
+            # try:
+            #     print("query type:",query.dtype)
+            # except:
+            #     pass
+            # try:
+            #     print("key type:",key.dtype)
+            # except:
+            #     pass
+            # try:
+            #     print("attn_mask type:",attn_mask.dtype)
+            # except:
+            #     pass
             assert key is not None and value is not None
             return F.multi_head_attention_forward(
                 query,
