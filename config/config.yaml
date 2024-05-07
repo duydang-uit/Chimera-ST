@@ -61,7 +61,7 @@ dataset:
     max_tokens_valid: ${dataset.max_tokens}
     batch_size_valid: ${dataset.batch_size}
 optimization:
-    max_epoch: 0
+    max_epoch: 2
     max_update: 0
     clip_norm: 25.0
     sentence_avg: false
