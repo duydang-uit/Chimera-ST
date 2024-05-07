@@ -47,7 +47,7 @@ class Trainer(object):
     """
 
     def __init__(self, cfg: FairseqConfig, task, model, criterion, quantizer=None):
-        print("Code trainer 1")
+        # print("Code trainer 1")
         if isinstance(cfg, Namespace):
             logger.warning(
                 "argparse.Namespace configuration is deprecated! Automatically converting to OmegaConf"
@@ -58,7 +58,7 @@ class Trainer(object):
         self.task = task
 
         # catalog shared parameters
-        print("Code trainer 2")
+        # print("Code trainer 2")
         shared_params = _catalog_shared_params(model)
         self.tpu = cfg.common.tpu
         self.cuda = torch.cuda.is_available() and not cfg.common.cpu and not self.tpu
@@ -70,7 +70,7 @@ class Trainer(object):
             self.device = torch.device("cpu")
 
         # copy model and criterion to current device/dtype
-        print("Code trainer 3")
+        # print("Code trainer 3")
         self._criterion = criterion
         self._model = model
         if self.tpu:
@@ -94,7 +94,7 @@ class Trainer(object):
             )
 
         # check that shared parameters are preserved after device transfer
-        print("Code trainer 4")
+        # print("Code trainer 4")
         for shared_param in shared_params:
             ref = _get_module_by_path(self._model, shared_param[0])
             for path in shared_param[1:]:
@@ -143,7 +143,7 @@ class Trainer(object):
         self._cumulative_training_time = None
 
     def reinitialize(self):
-        print("Code trainer 5")
+        # print("Code trainer 5")
         """Reinitialize the Trainer, typically after model params change."""
         self._lr_scheduler = None
         self._optimizer = None
@@ -152,7 +152,7 @@ class Trainer(object):
 
     @property
     def data_parallel_world_size(self):
-        print("Code trainer 6")
+        # print("Code trainer 6")
         return self.cfg.distributed_training.distributed_world_size
 
     @property
@@ -164,17 +164,17 @@ class Trainer(object):
 
     @property
     def data_parallel_rank(self):
-        print("Code trainer 7")
+        # print("Code trainer 7")
         return self.cfg.distributed_training.distributed_rank
 
     @property
     def is_data_parallel_master(self):
-        print("Code trainer 8")
+        # print("Code trainer 8")
         return distributed_utils.is_master(self.cfg.distributed_training)
 
     @property
     def criterion(self):
-        print("Code trainer 9")
+        # print("Code trainer 9")
         if self._wrapped_criterion is None:
             if (
                 utils.has_parameters(self._criterion)
@@ -193,7 +193,7 @@ class Trainer(object):
 
     @property
     def model(self):
-        print("Code trainer model 1")
+        # print("Code trainer model 1")
         if self._wrapped_model is None:
             if (
                 self.data_parallel_world_size > 1
@@ -211,20 +211,20 @@ class Trainer(object):
 
     @property
     def optimizer(self):
-        print("Code optimizer 1")
+        # print("Code optimizer 1")
         if self._optimizer is None:
             self._build_optimizer()
         return self._optimizer
 
     @property
     def lr_scheduler(self):
-        print("Code lr_scheduler 1")
+        # print("Code lr_scheduler 1")
         if self._lr_scheduler is None:
             self._build_optimizer()  # this will initialize self._lr_scheduler
         return self._lr_scheduler
 
     def _build_optimizer(self):
-        print("Code build optimizer 1")
+        # print("Code build optimizer 1")
         params = list(
             filter(
                 lambda p: p.requires_grad,
