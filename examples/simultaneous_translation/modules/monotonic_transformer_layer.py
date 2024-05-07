@@ -13,7 +13,6 @@ class TransformerMonotonicEncoderLayer(TransformerEncoderLayer):
         seq_len, _, _ = x.size()
         attn_mask = x.new_ones([seq_len, seq_len]).triu(1).to(torch.float16)
         attn_mask = attn_mask.masked_fill(attn_mask.bool(), float("-inf"))
-        print("monotonic_transformer_layer attn_mask:", attn_mask)
         try:
             print("monotonic_transformer_layer attn_mask type:", attn_mask.dtype)
         except:
